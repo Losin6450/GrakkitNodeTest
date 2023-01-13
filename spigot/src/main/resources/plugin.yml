@@ -1,0 +1,6 @@
+name: GrakkitNodeSpigot
+version: '${version}'
+main: me.losin6450.plugin.grakkitnodespigot.GrakkitNodeSpigot
+api-version: 1.17
+authors: [ Losin6450 ]
+description: GrakkitNode for spigot

@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://jitpack.io' }
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    implementation project(':core')
+
+    implementation 'com.caoccao.javet:javet:2.0.3'
+    implementation 'org.yaml:snakeyaml:1.33'
+    implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5'
+    implementation 'net.bytebuddy:byte-buddy:1.12.21'
+
+
+    compileOnly 'org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT'
+}
+
+jar {
+    archiveBaseName.set('GrakkitNode')
+    archiveClassifier.set('spigot')
+    archiveVersion.set(project.property('version'))
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+processResources {
+    filesMatching('**/plugin.yml') {
+        expand project.properties
+    }
+}
+
+task prepareKotlinBuildScriptModel {
+
+}

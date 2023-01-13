@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'me.losin6450'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.caoccao.javet:javet:2.0.3'
+    implementation 'org.yaml:snakeyaml:1.33'
+    implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5'
+    implementation 'net.bytebuddy:byte-buddy:1.12.21'
+
+
+}
+
+jar {
+    archiveBaseName.set('GrakkitNode')
+    archiveClassifier.set('core')
+    archiveVersion.set(project.property('version'))
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}

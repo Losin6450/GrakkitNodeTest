@@ -1,0 +1,3 @@
+rootProject.name = 'GrakkitNode'
+include 'core', 'spigot'
+
